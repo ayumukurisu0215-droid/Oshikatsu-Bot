@@ -37,12 +37,12 @@ def analyze_with_gemini(text):
     model = genai.GenerativeModel("models/gemini-2.5-flash")
     
     prompt = f"""
-    以下のWebサイトのテキストから、「グッズ発売」や「チケット申込」に関する情報を抽出してください。
+    以下のWebサイトのテキストから、「ライブ」や「イベント」に関する情報を抽出してください。
     過去の日付のものは無視して、未来のイベントだけを抽出してください。
     
     出力は以下のJSON形式のみで返してください（Markdown記法は不要）:
     [
-        {{"event_name": "イベント名やグッズ名", "date": "日付(YYYY-MM-DD)", "details": "詳細一言"}}
+        {{"event_name": "ライブやイベント名", "date": "日付(YYYY-MM-DD)", "details": "詳細一言"}}
     ]
     
     もし新しい情報がなければ空のリスト [] を返してください。
