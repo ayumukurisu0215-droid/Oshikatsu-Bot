@@ -17,18 +17,19 @@ graph TD
     Cron["GitHub Actions\n(Daily Cron Schedule)"] -->|Trigger| Script[Python Script]
     
     subgraph "Application Logic"
-        Script -->|1. Scrape| Web[Target Website]
-        Web -->|HTML/Text| Script
-        Script -->|2. Analyze Text| AI[Google Gemini API]
-        AI -->|Structured JSON| Script
+        Script -->|"1. Scrape"| Web[Target Website]
+        Web -->|"HTML/Text"| Script
+        Script -->|"2. Analyze Text"| AI[Google Gemini API]
+        AI -->|"Structured JSON"| Script
         
-        Script -->|3. Check Duplicates| DB[(Supabase DB)]
+        Script -->|"3. Check Duplicates"| DB[(Supabase DB)]
         
-        Script -- New Event -->|4. Notify| Line[LINE Messaging API]
-        Script -- Duplicate -->|Skip| EndNode[End Process]
+        %% 【修正箇所】書き方を統一しました
+        Script -- "New Event (4. Notify)" --> Line[LINE Messaging API]
+        Script -- "Duplicate (Skip)" --> EndNode[End Process]
         
-        Line -->|Push Message| User[User Mobile]
-        Script -->|5. Save History| DB
+        Line -->|"Push Message"| User[User Mobile]
+        Script -->|"5. Save History"| DB
     end
 
 ```
