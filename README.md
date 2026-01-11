@@ -14,7 +14,7 @@ GitHub Actionsをトリガーとして、ETL（Extract, Transform, Load）ライ
 
 ```mermaid
 graph TD
-    Cron[GitHub Actions\n(Daily Cron Schedule)] -->|Trigger| Script[Python Script]
+    Cron["GitHub Actions\n(Daily Cron Schedule)"] -->|Trigger| Script[Python Script]
     
     subgraph "Application Logic"
         Script -->|1. Scrape| Web[Target Website]
@@ -25,7 +25,7 @@ graph TD
         Script -->|3. Check Duplicates| DB[(Supabase DB)]
         
         Script -- New Event -->|4. Notify| Line[LINE Messaging API]
-        Script -- Duplicate -->|Skip| End[End Process]
+        Script -- Duplicate -->|Skip| EndNode[End Process]
         
         Line -->|Push Message| User[User Mobile]
         Script -->|5. Save History| DB
